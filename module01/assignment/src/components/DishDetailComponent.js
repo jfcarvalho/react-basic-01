@@ -7,15 +7,34 @@ class DishDetail extends Component {
         super(props);
     }
 
+    renderComments(comments)
+    {
+            return (
+                comments.map((item, key) =>
+                    React.createElement('div', null, React.createElement('p', null, item.author),React.createElement('li', null, item.author, item.comment))
+            )); 
+    }
+
     render() {
         return (
+          
             <Card>
-            <CardImg width="100%" src={this.props.dish.image} alt={this.props.dish.name} />
-            <CardBody>
-                <CardTitle>{this.props.dish.name}</CardTitle>
-                <CardTitle>{this.props.dish.description}</CardTitle>
-            </CardBody>
-         </Card>   
+             <div className="row">   
+                <div className="col">   
+                    <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name} />
+                        <CardBody>
+                            <CardTitle>{this.props.dish.name}</CardTitle>
+                            <CardTitle>{this.props.dish.description}</CardTitle>
+                        </CardBody>
+                </div>
+               
+                <div className="col">
+                   {this.renderComments(this.props.dish.comments)}
+                </div>
+               
+            </div>
+         </Card>  
+        
         );
     }
 }

@@ -18,7 +18,9 @@ class Menu extends Component {
     renderDish(dish) {
         if(dish != null) {
             return(
+                
                <DishDetail dish={dish}></DishDetail>
+               
             );
         }
         else {
@@ -33,7 +35,7 @@ class Menu extends Component {
             return (
                 <div key={dish.id} className="col-12 col-md-5 m-1">
                     <Card onClick={() => this.onDishSelect(dish)}>
-                        <CardImg width="100%" src={dish.image} alt={dish.name}/>             
+                    <CardImg width="100%" src={dish.image} alt={dish.name}/>             
                             <CardImgOverlay body className="ml-5">
                                 <CardTitle>{dish.name}</CardTitle>
                                 <p>{dish.description}</p>
