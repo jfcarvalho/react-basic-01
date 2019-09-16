@@ -11,7 +11,7 @@ class DishDetail extends Component {
     {
             return (
                 comments.map((item, key) =>
-                    React.createElement('div', null, React.createElement('p', null, item.author),React.createElement('li', null, item.author, item.comment))
+                    React.createElement('div', null, React.createElement('p', null, item.comment), React.createElement('p', null, "-- " + item.author + " ," + item.date))
             )); 
     }
 
@@ -29,6 +29,7 @@ class DishDetail extends Component {
                 </div>
                
                 <div className="col">
+                    <h3>Comments</h3>
                    {this.renderComments(this.props.dish.comments)}
                 </div>
                
