@@ -22,24 +22,26 @@ class Main extends Component {
       this.setState({selectedDish:dishId});
   }
 
-  render() {
-  return (
-    <div>
-    <Navbar dark color="primary">
-        <div className="container">
-          <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-        </div>
-    </Navbar>
 
-    <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)}/>
-    
-     
-     <DishDetail dish= {this.state.dishes.map((value) => value.id == this.state.selectedDish ? value : null )} /> 
-        
-    </div>
-  );
- }
-}
+
+  render() {
+    return (
+      <div>
+      <Navbar dark color="primary">
+          <div className="container">
+            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
+          </div>
+      </Navbar>
+  
+      <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)}/>
+      
+       
+       <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} /> 
+          
+      </div>
+    );
+   }
+  }
 
 export default Main;
 

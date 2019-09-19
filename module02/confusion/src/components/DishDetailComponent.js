@@ -21,16 +21,16 @@ class DishDetail extends Component {
             <Card>
              <div className="row">   
                 <div className="col-12 col-md-5 m-1">   
-                    <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name} />
+                    <CardImg width="50%" src={this.props.dish  ? this.props.dish.image : ''} alt={this.props.dish ? this.props.dish.name : ''} />
                         <CardBody>
-                            <CardTitle>{this.props.dish.name}</CardTitle>
-                            <CardTitle>{this.props.dish.description}</CardTitle>
+                            <CardTitle>{this.props.dish ? this.props.dish.name : ''}</CardTitle>
+                            <CardTitle>{this.props.dish ? this.props.dish.description: ''}</CardTitle>
                         </CardBody>
                 </div>
                
                 <div className="col-12 col-md-5 m-1">
                     <h3>Comments</h3>
-                   {this.renderComments(this.props.dish.comments)}
+                   { this.props.dish && this.props.dish.comments ? this.renderComments(this.props.dish.comments) : ''}
                 </div>
                
             </div>
