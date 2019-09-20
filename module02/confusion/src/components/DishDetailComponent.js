@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle,  Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -15,6 +16,17 @@ import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
         return (
           
             <Card>
+                 <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Menu</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>Menu</h3>
+
+                    </div>
+                </div>
+
              <div className="row">   
                 <div className="col-12 col-md-5 m-1">   
                     <CardImg width="50%" src={props.dish  ? props.dish.image : ''} alt={props.dish ? props.dish.name : ''} />
@@ -26,7 +38,7 @@ import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
                
                 <div className="col-12 col-md-5 m-1">
                     <h3>Comments</h3>
-                   { props.dish && props.dish.comments ? renderComments(props.dish.comments) : ''}
+                   { props.dish && props.comments ? renderComments(props.comments) : ''}
                 </div>
                
             </div>
