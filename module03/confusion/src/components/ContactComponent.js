@@ -14,9 +14,29 @@ class Contact extends Component
             telnum: '',
             email: '',
             agree: false,
-            contactType: 'Tel',
+            contactType: 'Tel.',
             message: ''
         }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+    handleInputChange(event)
+    {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+    handleSubmit(event)
+    {
+        console.log("Current State is: " + JSON.stringify(this.state));
+        alert("Current State is: " + JSON.stringify(this.state));
+        event.preventDefault();
     }
 
     render() {
@@ -61,7 +81,7 @@ class Contact extends Component
             <h3>Send Us Your Feedback</h3>
         </div>
         <div className="col-12 col-md-9">
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
                 <FormGroup row>
                     <Label htmlFor="firstname" md={2}>First Name</Label>
                     <Col md={10}>
@@ -69,6 +89,7 @@ class Contact extends Component
                                id="firstname" 
                                name="firstname" 
                                placeholder="First Name" 
+                               onChange={this.handleInputChange}
                                value={this.state.firstname} />
                     </Col>              
                 </FormGroup>
@@ -79,6 +100,7 @@ class Contact extends Component
                                id="lastname" 
                                name="lastname" 
                                placeholder="Last Name" 
+                               onChange={this.handleInputChange}
                                value={this.state.lastname} />
                     </Col>              
                 </FormGroup>
@@ -88,7 +110,8 @@ class Contact extends Component
                         <Input type="tel" 
                                id="telnum" 
                                name="telnum" 
-                               placeholder="Tel. Name" 
+                               placeholder="Tel. Name"
+                               onChange={this.handleInputChange} 
                                value={this.state.telnum} />
                     </Col>              
                 </FormGroup>
@@ -99,6 +122,7 @@ class Contact extends Component
                                id="email" 
                                name="email" 
                                placeholder="Email" 
+                               onChange={this.handleInputChange}
                                value={this.state.email} />
                     </Col>              
                 </FormGroup>
@@ -106,18 +130,34 @@ class Contact extends Component
                     <Col md={{size:6, offset:2}}>
                         <FormGroup check>
                             <Label check>
-                                <Input type="checkbox" name="agree" checked={this.state.agree} /> {' '}
+                                <Input type="checkbox" name="agree" checked={this.state.agree} onChange={this.handleInputChange}  /> {' '}
                                 <strong>May we contact you?</strong>
                             </Label>
 
                         </FormGroup>
                     </Col>
                     <Col md={{size:3, offset:1}}>
-                        <Input type="select" name="ContactType" value={this.state.contactType}>
+                        <Input type="select" name="contactType" value={this.state.contactType} onChange={this.handleInputChange}>
                             <option>Tel.</option>
                             <option>Email</option>  
                         </Input>
                     </Col>              
+                </FormGroup>
+                <FormGroup row>
+                    <Label htmlFor="message" md={2}>Your Feedback</Label>
+                    <Col md={10}>
+                        <Input type="textarea" 
+                               id="message" 
+                               name="message" 
+                               rows="12" 
+                               onChange={this.handleInputChange}
+                               value={this.state.message} />
+                    </Col>              
+                </FormGroup>
+                <FormGroup row>
+                    <Col md={{size:10, offset:2}}>
+                        <Button type="submit" color="primary">Send Feedback</Button> 
+                    </Col> 
                 </FormGroup>
             </Form>
         </div>
