@@ -17,25 +17,26 @@ class DishDetail extends Component {
 
     render() {
         return (
-          
+            <div className="row"> 
+             <div className="col-12 col-md-5 m-1">
             <Card>
-             <div className="row">   
-                <div className="col-12 col-md-5 m-1">   
+              
+                  
                     <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name} />
                         <CardBody>
                             <CardTitle>{this.props.dish.name}</CardTitle>
                             <CardTitle>{this.props.dish.description}</CardTitle>
                         </CardBody>
-                </div>
                
-                <div className="col-12 col-md-5 m-1">
-                    <h3>Comments</h3>
-                   {this.renderComments(this.props.dish.comments)}
-                </div>
-               
+                
+            </Card>
             </div>
-         </Card>  
-        
+                <div className="col-12 col-md-5 m-1">
+                    <h4>Comments</h4>
+                   {this.renderComments(this.props.dish.comments)}
+                </div>      
+           
+        </div>
         );
     }
 }
