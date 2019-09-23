@@ -9,12 +9,12 @@ function RenderLeader({leader})
                 
                 <div className="col-12">
                 <Media tag="li">
-                        <Media left middle>
+                        <Media left top>
                         <Media object src={leader.image} alt={leader.name}/> 
                         </Media>
                         <Media body className="ml-5">
                             <Media heading>{leader.name}</Media>
-                            {leader.designation}
+                            <p>{leader.designation}</p>
                             <p>{leader.description}</p>
                         </Media>   
                    </Media> 
