@@ -12,14 +12,16 @@ class DishDetail extends Component {
         if(comments)
         {
             return (
-                comments.map(comment => (
-                    <ul className="list-unstyled">
+                <ul className="list-unstyled">
+                {comments.map(comment => (
+                    
                         <li>
                             <p>{comment.comment}</p>
                             <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} </p>
                         </li>
-                    </ul>
-                ))
+                    
+                ))}
+                </ul>
                 );
         }
         else{
