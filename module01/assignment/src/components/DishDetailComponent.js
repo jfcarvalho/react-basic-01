@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardBody, CardText ,CardTitle } from 'reactstrap';
 
 class DishDetail extends Component {
 
@@ -9,27 +9,53 @@ class DishDetail extends Component {
 
     renderComments(comments)
     {
+        if(comments)
+        {
             return (
-                comments.map((item, key) =>
-                    React.createElement('div', null, React.createElement('p', null, item.comment), React.createElement('p', null, "-- " + item.author + " ," + new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day: '2-digit'}).format(new Date(Date.parse(item.date)))))
-            )); 
+                comments.map(comment => (
+                    <ul className="list-unstyled">
+                        <li>
+                            <p>{comment.comment}</p>
+                            <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} </p>
+                        </li>
+                    </ul>
+                ))
+                );
+        }
+        else{
+            return(
+                <div></div>
+            );
+        }    
+         
+    }
+
+    renderDish(dish)
+    {
+        if(dish)
+        {
+            return(
+                <Card>
+                    <CardImg width="100%" src={dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle>{dish.name}</CardTitle>
+                            <CardText>{dish.description}</CardText>
+                        </CardBody>
+            </Card>
+            );
+        }
+        else{
+            return(
+                <div></div>
+            );
+        }
     }
 
     render() {
         return (
             <div className="row"> 
              <div className="col-12 col-md-5 m-1">
-            <Card>
-              
-                  
-                    <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name} />
-                        <CardBody>
-                            <CardTitle>{this.props.dish.name}</CardTitle>
-                            <CardTitle>{this.props.dish.description}</CardTitle>
-                        </CardBody>
-               
-                
-            </Card>
+                {this.renderDish(this.props.dish)}
             </div>
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
