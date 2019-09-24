@@ -33,7 +33,7 @@ class Main extends Component {
     super(props);  
   }
 
-  componentDidMout() {
+  componentDidMount() {
     this.props.fetchDishes();
   }
 

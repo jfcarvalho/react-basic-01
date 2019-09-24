@@ -1,5 +1,5 @@
 import { DISHES } from '../shared/dishes';
-import { ActionTypes } from 'react-redux-form';
+import * as ActionTypes from './ActionTypes';
 
 export const Dishes = (state={
     isLoading: true,
