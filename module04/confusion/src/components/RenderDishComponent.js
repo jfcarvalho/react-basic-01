@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
+import {baseUrl } from '../shared/baseUrl'
 
 class RenderDish extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class RenderDish extends Component {
     {
         return (
             <div className="col-12 col-md-5 m-1">   
-            <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name} />
+            <CardImg width="50%" src={baseUrl + this.props.dish.image} alt={this.props.dish.name} />
                 <CardBody>
                     <CardTitle> {this.props.dish.name}</CardTitle>
                     <CardTitle>{this.props.dish.description}</CardTitle>
