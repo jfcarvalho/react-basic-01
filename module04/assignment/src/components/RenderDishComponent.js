@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
-import {baseUrl } from '../shared/baseUrl';
-import { FadeTransform } from 'react-animation-components';
+import {baseUrl } from '../shared/baseUrl'
+import { FadeTransform } from 'react-animation-components'
 
 class RenderDish extends Component {
     constructor(props) {
