@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Form, FormFeedback,FormGroup, Input, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import {Control, Errors, actions} from 'react-redux-form'
+import {LocalForm} from 'react-redux-form'
+import { connect } from 'react-redux';
 
 
 const required = (val) => val && val.length;
@@ -25,10 +27,9 @@ class Contact extends Component
     {
         
         alert("Current State is: " + JSON.stringify(values));
-       this.props.resetFeedbackForm();
+        this.props.postFeedback(values);
+        this.props.resetFeedbackForm();
     }
-
-
 
 
     render() {
@@ -74,7 +75,7 @@ class Contact extends Component
             <h3>Send Us Your Feedback</h3>
         </div>
         <div className="col-12 col-md-9">
-            <Form  model='feedback' onSubmit={(values) => this.handleSubmit(values)}>
+            <LocalForm  onSubmit={(values) => this.handleSubmit(values)}>
             <Row className="form-group">
                     <Label htmlFor="firstname" md={2}>First Name</Label>
                     <Col md={10}>
@@ -172,7 +173,7 @@ class Contact extends Component
                     <Col md={{size:6, offset:2}}>
                         <div className="form-check">
                             <Label check>
-                                <Control.checkbox model=".agree" name="agree" 
+                                <Control.checkbox model=".agree" name="agree" id="agree" 
                                 className="form-control"
                                    /> {' '}
                                 <strong>May we contact you?</strong>
@@ -181,7 +182,7 @@ class Contact extends Component
                         </div>
                     </Col>
                     <Col md={{size:3, offset:1}}>
-                        <Control.select model =".contactType" name="contactType" 
+                        <Control.select model =".contactType" name="contactType" id="contactType"  
                             className="form-control" >
                             <option>Tel.</option>
                             <option>Email</option>  
@@ -206,7 +207,7 @@ class Contact extends Component
                         <Button type="submit" color="primary">Send Feedback</Button> 
                     </Col> 
                      </Row>
-            </Form>
+            </LocalForm>
         </div>
     </div>
 </div>

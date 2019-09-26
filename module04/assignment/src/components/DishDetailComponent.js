@@ -117,7 +117,7 @@ class CommentForm extends Component
                     </Row>
                     <Row className="form-group"> 
                     <Col md={{size:10, offset:2}}>    
-                         <Button type="submit" value="submit" className="bg-primary">Login</Button>      
+                         <Button type="submit" value="submit" className="bg-primary">Post</Button>      
                     </Col>
                     </Row>
                     
