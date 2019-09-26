@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import {Control, LocalForm, Errors} from 'react-redux-form'
 import {Loading} from './LoadingComponent'
 import {baseUrl } from '../shared/baseUrl'
+import { Fade, Stagger } from 'react-animation-components'
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len)
@@ -136,15 +137,20 @@ function RenderComments({comments, postComment, dishId}) {
                 return (
                     <div>
                     <h4>Comments</h4>
-                    <ul className="list-unstyled">{
+                    <ul className="list-unstyled">
+                    <Stagger in>   
+                    {
                     comments.map(comment => (
                         
-                            <li>
-                                <p>{comment.comment}</p>
-                                <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} </p>
-                            </li>
-                        
-                    ))} </ul>
+                            <Fade in>
+                                <li>
+                                    <p>{comment.comment}</p>
+                                    <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} </p>
+                                </li>
+                            </Fade>
+                    ))} 
+                    </Stagger> 
+                    </ul>
                     <CommentForm postComment={postComment} dishId={dishId}/>
                     </div>
                     );
